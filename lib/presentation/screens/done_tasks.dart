@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taski/presentation/screens/taskListCompleted.dart';
+import 'package:taski/presentation/viewmodels/task_viewmodel.dart';
 import 'package:taski/widgets/header.dart';
-import '../viewmodels/task_viewmodel.dart';
 
 class TasksDoneScreen extends ConsumerWidget {
   const TasksDoneScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tasks = ref.watch(taskViewModelProvider);
+    final tasks = ref.watch(taskListProvider);
     final completedTasks = tasks.where((task) => task.isCompleted).toList();
 
     return Scaffold(

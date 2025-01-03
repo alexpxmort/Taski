@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taski/data/database/task_model.dart';
+import 'package:taski/presentation/viewmodels/task_viewmodel.dart';
 
-class TaskList extends StatelessWidget {
+class TaskList extends ConsumerWidget {
   final List<TaskModel>
       tasks; // Propriedade 'tasks' para armazenar a lista de tarefas
 
@@ -10,7 +12,7 @@ class TaskList extends StatelessWidget {
       required this.tasks}); // Recebe a lista de tarefas como parâmetro
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: ListView.builder(
         itemCount: tasks.length, // Conta a quantidade de tarefas
@@ -36,6 +38,9 @@ class TaskList extends StatelessWidget {
                         onChanged: (bool? newValue) {
                           isCompleted.value = newValue ??
                               false; // Atualiza o estado do checkbox
+                          ref
+                              .read(taskDetailProvider.notifier)
+                              .updateIsComplete(task, isCompleted.value);
                         },
                       ),
                       Expanded(

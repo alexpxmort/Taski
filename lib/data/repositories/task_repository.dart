@@ -15,12 +15,12 @@ class TaskRepository {
     await db.insert('tasks', task.toJson());
   }
 
-  Future<void> toggleTaskCompletion(int id) async {
+  Future<void> setIsComplete(int id, bool isCompleted) async {
     final db = await _dbHelper.database;
     await db.rawUpdate('''
       UPDATE tasks
-      SET isCompleted = NOT isCompleted
+      SET isCompleted = ?
       WHERE id = ?
-    ''', [id]);
+    ''', [id, isCompleted ? 1 : 0]);
   }
 }

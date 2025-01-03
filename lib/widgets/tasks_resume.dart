@@ -8,11 +8,14 @@ class TaskResume extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Obtém as tasks do provider
-    final tasks = ref.watch(taskViewModelProvider);
+    final tasks = ref.watch(taskListProvider);
 
     // Filtra as tarefas que não estão completas
     final incompleteTasks = tasks.where((task) => !task.isCompleted).toList();
 
+    if (incompleteTasks.length <= 0) {
+      return Container();
+    }
     return Container(
       padding: EdgeInsets.only(top: 4, bottom: 20),
       child: Text(

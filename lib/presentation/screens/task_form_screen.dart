@@ -33,7 +33,7 @@ class TaskFormScreen extends ConsumerWidget {
                     title: controller.text,
                     isCompleted: false,
                   );
-                  ref.read(taskViewModelProvider.notifier).addTask(newTask);
+                  ref.read(taskListProvider.notifier).addTask(newTask);
                   controller.text = '';
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
