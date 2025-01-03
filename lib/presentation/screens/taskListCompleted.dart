@@ -36,6 +36,7 @@ class TaskListCompleted extends StatelessWidget {
                       task.title,
                       style: TextStyle(
                         fontSize: 16,
+                        fontFamily: 'Urbanist',
                         fontWeight: FontWeight.w600,
                         color: Color(
                             0xFF8D9CB8), // Cor do texto para melhor contraste

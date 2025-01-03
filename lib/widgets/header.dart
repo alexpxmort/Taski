@@ -34,6 +34,7 @@ class HeaderWidget extends StatelessWidget {
               Text(
                 "John",
                 style: TextStyle(
+                  fontFamily: 'Urbanist',
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF3F3D56),

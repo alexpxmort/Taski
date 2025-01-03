@@ -29,6 +29,7 @@ class TasksDoneScreen extends ConsumerWidget {
                     Text(
                       "Completed Tasks",
                       style: TextStyle(
+                          fontFamily: 'Urbanist',
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Color(0xFF3F3D56)),
@@ -36,6 +37,8 @@ class TasksDoneScreen extends ConsumerWidget {
                     GestureDetector(
                         child: Text('Delete All',
                             style: TextStyle(
+                              fontFamily: 'Urbanist',
+
                               color: Color(0xFFFF5E5E), // Cor do texto branco
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,

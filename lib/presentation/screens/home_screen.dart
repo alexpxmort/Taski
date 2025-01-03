@@ -28,6 +28,7 @@ class HomeScreen extends ConsumerWidget {
                   Text(
                     "Welcome, ",
                     style: TextStyle(
+                      fontFamily: 'Urbanist',
                       fontSize: 20.0,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF3F3D56),
@@ -37,6 +38,7 @@ class HomeScreen extends ConsumerWidget {
                   Text(
                     "John.",
                     style: TextStyle(
+                      fontFamily: 'Urbanist',
                       fontSize: 20.0,
                       fontWeight: FontWeight.w700,
                       color: Colors.blue,
