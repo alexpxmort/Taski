@@ -9,9 +9,7 @@ class CreateTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: HeaderWidget()),
-      body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Expanded(child: TaskFormScreen())),
+      body: TaskFormScreen(),
     );
   }
 }

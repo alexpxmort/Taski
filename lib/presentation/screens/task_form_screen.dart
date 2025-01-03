@@ -4,7 +4,9 @@ import 'package:taski/presentation/viewmodels/task_viewmodel.dart';
 import '../../data/database/task_model.dart';
 
 class TaskFormScreen extends ConsumerWidget {
-  const TaskFormScreen({Key? key}) : super(key: key);
+  final bool isModal;
+
+  const TaskFormScreen({Key? key, this.isModal = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,6 +42,10 @@ class TaskFormScreen extends ConsumerWidget {
                       content: Text('Task adicionada com Sucesso!'),
                     ),
                   );
+
+                  if (isModal) {
+                    Navigator.of(context).pop();
+                  }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

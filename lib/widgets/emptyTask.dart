@@ -20,7 +20,7 @@ class EmptyTaskWidget extends StatelessWidget {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Row(
                 children: [
@@ -42,7 +42,10 @@ class EmptyTaskWidget extends StatelessWidget {
               Divider(),
               Row(
                 children: [
-                  Expanded(child: TaskFormScreen()),
+                  Expanded(
+                      child: TaskFormScreen(
+                    isModal: true,
+                  )),
                 ],
               ),
             ],
