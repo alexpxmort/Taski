@@ -10,19 +10,23 @@ class TaskFormScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = TextEditingController();
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Add Task')),
-      body: Padding(
+    return Container(
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
-              controller: controller,
-              decoration: const InputDecoration(labelText: 'Task Title'),
-            ),
+                controller: controller,
+                decoration: const InputDecoration(
+                    labelText: 'Add a note',
+                    prefixIcon: Icon(
+                      Icons.edit,
+                      size: 20,
+                      color: Color(0xFFC6CFDC),
+                    ))),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 if (controller.text.isNotEmpty) {
                   final newTask = TaskModel(
                     id: DateTime.now().millisecondsSinceEpoch,
@@ -30,7 +34,12 @@ class TaskFormScreen extends ConsumerWidget {
                     isCompleted: false,
                   );
                   ref.read(taskViewModelProvider.notifier).addTask(newTask);
-                  Navigator.pop(context);
+                  controller.text = '';
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Task adicionada com Sucesso!'),
+                    ),
+                  );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -39,7 +48,13 @@ class TaskFormScreen extends ConsumerWidget {
                   );
                 }
               },
-              child: const Text('Save'),
+              child: const Text(
+                'Create',
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16),
+              ),
             ),
           ],
         ),

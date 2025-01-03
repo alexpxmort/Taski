@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:taski/presentation/screens/task_list.dart';
+import 'package:taski/widgets/emptyTask.dart';
+import 'package:taski/widgets/header.dart';
+import 'package:taski/widgets/tasks_resume.dart';
 import '../viewmodels/task_viewmodel.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -8,29 +12,45 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tasks = ref.watch(taskViewModelProvider);
+    print(tasks.length);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Taski')),
-      body: tasks.isEmpty
-          ? const Center(child: Text('No tasks available'))
-          : ListView.builder(
-              itemCount: tasks.length,
-              itemBuilder: (context, index) {
-                final task = tasks[index];
-                return ListTile(
-                  title: Text(task.title),
-                  trailing: Checkbox(
-                    value: task.isCompleted,
-                    onChanged: (_) {
-                      //ref.read(taskViewModelProvider).toggleTaskStatus(task.id);
-                    },
+      appBar: AppBar(title: HeaderWidget()),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                spacing: 2,
+                children: [
+                  Text(
+                    "Welcome, ",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF3F3D56),
+                    ),
                   ),
-                );
-              },
-            ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, '/task-form'),
-        child: const Icon(Icons.add),
+                  Text(
+                    "John.",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
+              TaskResume(),
+              tasks.isEmpty
+                  ? EmptyTaskWidget()
+                  : Expanded(child: TaskList(tasks: tasks))
+            ],
+          ),
+        ),
       ),
     );
   }
