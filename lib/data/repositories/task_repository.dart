@@ -17,10 +17,14 @@ class TaskRepository {
 
   Future<void> setIsComplete(int id, bool isCompleted) async {
     final db = await _dbHelper.database;
-    await db.rawUpdate('''
-      UPDATE tasks
-      SET isCompleted = ?
-      WHERE id = ?
-    ''', [id, isCompleted ? 1 : 0]);
+
+    await db.rawUpdate(
+      '''
+    UPDATE tasks
+    SET isCompleted = ?
+    WHERE id = ?
+    ''',
+      [isCompleted ? 1 : 0, id],
+    );
   }
 }
