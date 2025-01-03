@@ -41,10 +41,14 @@ class HeaderWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 10),
-              CircleAvatar(
-                backgroundImage: AssetImage('images/profile.png'),
-
-                radius: 16.0, // Tamanho do avatar
+              ClipOval(
+                child: Image.asset(
+                  'assets/images/profile.png', // Caminho correto da imagem
+                  width: 40.0, // Largura do avatar
+                  height: 40.0, // Altura do avatar
+                  fit: BoxFit
+                      .cover, // Ajuste de cobertura para não distorcer a imagem
+                ),
               ),
             ],
           )
