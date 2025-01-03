@@ -57,7 +57,6 @@ class EmptyTaskWidget extends StatelessWidget {
     return Container(
         padding: EdgeInsets.all(8.0),
         child: Column(
-          spacing: 20,
           children: [
             SvgPicture.asset(
               'assets/images/task_icon.svg', // Caminho para o SVG
@@ -65,6 +64,7 @@ class EmptyTaskWidget extends StatelessWidget {
               width: 82.0,
               fit: BoxFit.cover, // Ajusta o SVG para cobrir o espaço
             ),
+            SizedBox(width: 20),
             Center(
                 child: Text(
               'You have no task listed.',

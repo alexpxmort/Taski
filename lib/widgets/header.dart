@@ -30,7 +30,6 @@ class HeaderWidget extends StatelessWidget {
             ],
           ),
           Row(
-            spacing: 10,
             children: [
               Text(
                 "John",
@@ -40,6 +39,7 @@ class HeaderWidget extends StatelessWidget {
                   color: Color(0xFF3F3D56),
                 ),
               ),
+              SizedBox(width: 10),
               CircleAvatar(
                 backgroundImage: AssetImage('images/profile.jpg'),
 

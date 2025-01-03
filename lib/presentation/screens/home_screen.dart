@@ -24,7 +24,7 @@ class HomeScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                spacing: 2,
+                
                 children: [
                   Text(
                     "Welcome, ",
@@ -34,6 +34,7 @@ class HomeScreen extends ConsumerWidget {
                       color: Color(0xFF3F3D56),
                     ),
                   ),
+                  SizedBox(width:5),
                   Text(
                     "John.",
                     style: TextStyle(

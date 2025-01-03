@@ -25,12 +25,12 @@ class TaskListCompleted extends StatelessWidget {
               tileColor:
                   Color(0xFFF5F7F9), // Cor de fundo para cada item da lista
               title: Row(
-                spacing: 4,
                 children: [
                   Icon(
                     Icons.check_box,
                     color: Color(0xFF8D9CB8), // Ícone de checkbox marcado
                   ),
+                  SizedBox(width: 5),
                   Expanded(
                     child: Text(
                       task.title,
