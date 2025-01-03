@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:taski/presentation/screens/createTask_screen.dart';
 import 'package:taski/presentation/screens/done_tasks.dart';
 import 'package:taski/presentation/screens/home_screen.dart';
+import 'package:taski/presentation/screens/search_screen.dart';
+import 'package:taski/widgets/header.dart';
 
 class TaskiApp extends StatefulWidget {
   const TaskiApp({Key? key}) : super(key: key);
@@ -24,8 +26,7 @@ class _TaskiAppState extends State<TaskiApp> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     CreateTaskScreen(),
-    Text('Search Screen',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    SearchScreen(),
     TasksDoneScreen()
   ];
 
@@ -38,9 +39,7 @@ class _TaskiAppState extends State<TaskiApp> {
       scrollBehavior:
           MaterialScrollBehavior(), // Comportamento de rolagem padrão
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Taski App'),
-        ),
+        appBar: AppBar(title: HeaderWidget()),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
@@ -50,12 +49,16 @@ class _TaskiAppState extends State<TaskiApp> {
           selectedItemColor: Colors.blue,
           selectedLabelStyle: TextStyle(
               fontSize: 14,
+              fontFamily: 'Urbanist',
               fontWeight: FontWeight.w600,
               color: Color(0xFFA2B9D4)), // Tamanho da fonte do item selecionado
           unselectedLabelStyle: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
+              fontFamily: 'Urbanist',
               color: Color(0xFFA2B9D4)), //
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -63,7 +66,7 @@ class _TaskiAppState extends State<TaskiApp> {
               label: 'Todo',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.create),
+              icon: Icon(Icons.add),
               label: 'Create',
             ),
             BottomNavigationBarItem(

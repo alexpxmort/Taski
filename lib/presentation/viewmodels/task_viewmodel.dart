@@ -47,4 +47,23 @@ class TaskDetailViewModel extends StateNotifier<TaskModel?> {
       isCompleted: isCompleted,
     );
   }
+
+  Future<void> updateTask(TaskModel task) async {
+    await _repository.updateTask(task);
+    state = TaskModel(
+      id: task.id,
+      title: task.title,
+      isCompleted: task.isCompleted,
+    );
+  }
+
+  Future<void> deleteTaskById(TaskModel task) async {
+    await _repository.deleteTaskById(task.id!);
+    state = null;
+  }
+
+  Future<void> deleteAllCompletedTasks() async {
+    await _repository.deleteAllCompletedTasks();
+    state = null;
+  }
 }

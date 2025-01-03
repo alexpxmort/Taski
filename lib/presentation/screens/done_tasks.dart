@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taski/presentation/screens/taskListCompleted.dart';
 import 'package:taski/presentation/viewmodels/task_viewmodel.dart';
+import 'package:taski/widgets/confirmation-dialog.dart';
 import 'package:taski/widgets/header.dart';
 
 class TasksDoneScreen extends ConsumerWidget {
@@ -13,7 +14,6 @@ class TasksDoneScreen extends ConsumerWidget {
     final completedTasks = tasks.where((task) => task.isCompleted).toList();
 
     return Scaffold(
-      appBar: AppBar(title: HeaderWidget()),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Padding(
@@ -35,6 +35,25 @@ class TasksDoneScreen extends ConsumerWidget {
                           color: Color(0xFF3F3D56)),
                     ),
                     GestureDetector(
+                        onTap: () async {
+                          final result = await ConfirmationDialog.show(
+                            context,
+                            title: 'Confirmação',
+                            content:
+                                'Tem certeza que deseja excluir todas as tarefas completadas?', // Texto ajustado
+                            cancelText: 'Cancelar',
+                            confirmText: 'Confirmar',
+                            confirmButtonColor: Colors.red,
+                          );
+
+                          if (result == true) {
+                            ref
+                                .read(taskDetailProvider.notifier)
+                                .deleteAllCompletedTasks();
+
+                            ref.read(taskListProvider.notifier).loadTasks();
+                          }
+                        },
                         child: Text('Delete All',
                             style: TextStyle(
                               fontFamily: 'Urbanist',

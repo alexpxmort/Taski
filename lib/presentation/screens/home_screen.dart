@@ -15,7 +15,6 @@ class HomeScreen extends ConsumerWidget {
     print(tasks.length);
 
     return Scaffold(
-      appBar: AppBar(title: HeaderWidget()),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Padding(

@@ -8,7 +8,6 @@ class CreateTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: HeaderWidget()),
       body: TaskFormScreen(),
     );
   }

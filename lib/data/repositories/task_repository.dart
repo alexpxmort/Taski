@@ -27,4 +27,40 @@ class TaskRepository {
       [isCompleted ? 1 : 0, id],
     );
   }
+
+  Future<void> updateTask(TaskModel task) async {
+    final db = await _dbHelper.database;
+
+    await db.rawUpdate(
+      '''
+    UPDATE tasks
+    SET title = ?
+    WHERE id = ?
+    ''',
+      [task.title, task.id],
+    );
+  }
+
+  Future<void> deleteTaskById(int id) async {
+    final db = await _dbHelper.database;
+
+    await db.rawUpdate(
+      '''
+    DELETE FROM  tasks
+    WHERE id = ?
+    ''',
+      [id],
+    );
+  }
+
+  Future<void> deleteAllCompletedTasks() async {
+    final db = await _dbHelper.database;
+
+    await db.rawUpdate(
+      '''
+    DELETE FROM  tasks
+    WHERE isCompleted = 1
+    ''',
+    );
+  }
 }
