@@ -18,6 +18,7 @@ class TaskFormScreen extends ConsumerWidget {
         child: Column(
           children: [
             TextField(
+                maxLines: 4, // Permite várias linhas
                 controller: controller,
                 decoration: const InputDecoration(
                     labelText: 'Add a note',

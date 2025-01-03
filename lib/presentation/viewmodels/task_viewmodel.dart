@@ -21,16 +21,16 @@ class TaskListViewModel extends StateNotifier<List<TaskModel>> {
   final TaskRepository _repository;
 
   TaskListViewModel(this._repository) : super([]) {
-    _loadTasks();
+    loadTasks();
   }
 
-  Future<void> _loadTasks() async {
+  Future<void> loadTasks() async {
     state = await _repository.getTasks();
   }
 
   Future<void> addTask(TaskModel task) async {
     await _repository.addTask(task);
-    await _loadTasks();
+    await loadTasks();
   }
 }
 

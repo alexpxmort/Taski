@@ -41,6 +41,8 @@ class TaskList extends ConsumerWidget {
                           ref
                               .read(taskDetailProvider.notifier)
                               .updateIsComplete(task, isCompleted.value);
+
+                          ref.read(taskListProvider.notifier).loadTasks();
                         },
                       ),
                       Expanded(

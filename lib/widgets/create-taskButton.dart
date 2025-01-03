@@ -10,7 +10,7 @@ class CreateTaskButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 1.0),
+        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         decoration: BoxDecoration(
           color: Color(0xFFEAF5FF), // Fundo azul-claro
           borderRadius: BorderRadius.circular(16.0), // Bordas arredondadas

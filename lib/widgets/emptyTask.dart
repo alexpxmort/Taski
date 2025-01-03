@@ -19,36 +19,38 @@ class EmptyTaskWidget extends StatelessWidget {
             top: 16.0,
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {
-                      // Handle checkbox state change
-                    },
-                  ),
-                  Text(
-                    "What's in your mind?",
-                    style: TextStyle(
-                        color: Color(0xFFC6CFDC),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-              Divider(),
-              Row(
-                children: [
-                  Expanded(
-                      child: TaskFormScreen(
-                    isModal: true,
-                  )),
-                ],
-              ),
-            ],
+          child: SizedBox(
+            height: 400,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Checkbox(
+                      value: false,
+                      onChanged: (value) {
+                        // Handle checkbox state change
+                      },
+                    ),
+                    Text(
+                      "What's in your mind?",
+                      style: TextStyle(
+                          color: Color(0xFFC6CFDC),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  children: [
+                    Expanded(
+                        child: TaskFormScreen(
+                      isModal: true,
+                    )),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
