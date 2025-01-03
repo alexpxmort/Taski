@@ -42,7 +42,7 @@ class HeaderWidget extends StatelessWidget {
               ),
               SizedBox(width: 10),
               CircleAvatar(
-                backgroundImage: AssetImage('images/profile.jpg'),
+                backgroundImage: AssetImage('images/profile.png'),
 
                 radius: 16.0, // Tamanho do avatar
               ),

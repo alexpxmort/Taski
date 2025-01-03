@@ -28,7 +28,7 @@ flutter:
 
   assets:
     - assets/images/task_icon.svg
-    - assets/images/profile.jpg
+    - assets/images/profile.png
 
   fonts:
     - family: Urbanist

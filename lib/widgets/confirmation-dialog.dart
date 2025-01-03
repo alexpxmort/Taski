@@ -54,29 +54,38 @@ class ConfirmationDialog extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
       ),
-      content: Row(
-        children: [
-          Text(
-            content,
-            style: const TextStyle(
-              color: Colors.black,
-              fontFamily: 'Urbanist',
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          SizedBox(
-            width: 5,
-          ),
-          if (item != null && item!.isNotEmpty)
+      content: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxWidth: 300, // Define uma largura máxima para o conteúdo
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Text(
-              '"$item!"',
+              content,
               style: const TextStyle(
                 color: Colors.black,
                 fontFamily: 'Urbanist',
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
               ),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
             ),
-        ],
+            const SizedBox(height: 8),
+            if (item != null && item!.isNotEmpty)
+              Text(
+                '"$item!"',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Urbanist',
+                  fontWeight: FontWeight.w600,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+          ],
+        ),
       ),
       actions: [
         TextButton(

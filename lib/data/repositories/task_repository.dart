@@ -5,9 +5,18 @@ class TaskRepository {
   final DatabaseHelper _dbHelper = DatabaseHelper();
 
   Future<List<TaskModel>> getTasks() async {
-    final db = await _dbHelper.database;
-    final result = await db.query('tasks');
-    return result.map((json) => TaskModel.fromJson(json)).toList();
+    // final db = await _dbHelper.database;
+    // final result = await db.query('tasks');
+    // return result.map((json) => TaskModel.fromJson(json)).toList();
+
+    final List<Map<String, dynamic>> fixedData = [
+      {'id': 1, 'title': 'Buy groceries', 'isCompleted': 1},
+      {'id': 2, 'title': 'Call mom', 'isCompleted': 0},
+      {'id': 3, 'title': 'Finish project', 'isCompleted': 0},
+      {'id': 4, 'title': 'Go to gym', 'isCompleted': 1},
+    ];
+
+    return fixedData.map((json) => TaskModel.fromJson(json)).toList();
   }
 
   Future<void> addTask(TaskModel task) async {

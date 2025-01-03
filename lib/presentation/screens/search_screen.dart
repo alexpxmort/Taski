@@ -20,6 +20,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   void initState() {
     super.initState();
+    // Inicializa a lista filtrada com todas as tarefas
+    final tasks = ref.read(taskListProvider);
+    _filteredTasks = tasks;
+
     // Atualiza os resultados da busca conforme o texto muda
     _searchController.addListener(_filterTasks);
   }
@@ -31,12 +35,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   void _filterTasks() {
-    final tasks = ref.read(taskListProvider);
+    final tasks = ref.read(taskListProvider); // Lê a lista completa de tarefas
     final query = _searchController.text.toLowerCase();
 
     setState(() {
       if (query.isEmpty) {
-        _filteredTasks = tasks;
+        _filteredTasks = tasks; // Mostra todas as tarefas
       } else {
         _filteredTasks = tasks
             .where((task) =>
@@ -48,8 +52,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final tasks = ref.watch(taskListProvider);
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
